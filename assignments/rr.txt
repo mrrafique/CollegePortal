@@ -1,0 +1,215 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+require_once("includes/db.php");
+session_start();
+
+    require_once("includes/db.php");
+//require_once("includes/sessioninit.php");
+print_r($_GET);
+    if(!strcmp($_GET['month'],"jul"))
+    {
+        $coll="c".$_GET['date'];
+        echo("yeah its july");
+        
+        
+            }
+       if($_GET['month']=='aug')
+    {    $collstart=32;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+            
+     
+                 
+              if($_GET['month']=='sep')
+    {    $collstart=64;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+              if($_GET['month']=='oct')
+    {    $collstart=95;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+              if($_GET['month']=='nov')
+    {    $collstart=127;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+              if($_GET['month']=='dec')
+    {    $collstart=158;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+              if($_GET['month']=='jan')
+    {     $coll="c".$_GET['date'];
+            }
+                 
+              if($_GET['month']=='feb')
+    {    if(date("Y")%4==0 && $_GET['date']==29)
+    {
+        $coll=184;///look at the logic here
+        
+    }
+                  $collstart=32;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+              if($_GET['month']=='mar')
+    {    $collstart=64;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+              if($_GET['month']=='apr')
+    {    $collstart=95;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+                   if($_GET['month']=='may')
+    {    $collstart=127;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+              if($_GET['month']=='jun')
+    { //   $arr="Sankalp";
+      
+                  
+                  $collstart=158;
+       $collstart+=$_GET['date'];
+        $coll="c".$collstart;
+            }
+                 
+              else
+              {print_r($_GET);
+              echo("baah");
+                  //header("Location:adminhome.php");
+                  
+                  
+              }
+            
+    
+   //return $coll; 
+    
+//$collname="c20";
+
+
+echo $_GET['subcode'];
+$tabresole=$_GET['subcode'];
+if($tabresole[7]==1)
+    $tabno=1;
+if($tabresole[7]==2)
+    $tabno=2;
+if($tabresole[7]==3)
+    $tabno=3;
+if($tabresole[7]==4)
+    $tabno=4;
+if($tabresole[7]==5)
+    $tabno=5;
+if($tabresole[7]==6)
+    $tabno=6;
+if($tabresole[7]==7)
+    $tabno=7;
+
+
+$tabno="tab0".$tabno;
+echo ("tabno".$tabno);
+$inval=$_GET['subcode'];
+echo $inval."is the subject code";
+//$collname=resolvegrid();
+$uidcoll=$_GET['studid'];
+$attend=$_GET['stat'];
+//$r=mysql_query(Select uid from $tabno where  )
+echo('<html><head><title>Attendance Post</title>
+    <link rel="stylesheet" type="text/css" media="all" href="css/tablekit.css" />
+                <script type=/"text/javascript/" src=/"js/prototype.js/"></script>
+		<script type=/"text/javascript/" src=/"js/fabtabulous.js/"></script>
+		<script type=/"text/javascript/" src=/"js/tablekit.js/"></script>
+		</head><body><h1>Attendance details for ');
+     echo($inval);
+     echo('<table class="sortable resizable editable">');
+     echo('<thead><tbody>
+					<tr><th class="sortfirstdesc" id="Student ID">Student ID</th>');
+     
+     for($i2=1;$i2<=31;$i2++)
+     {echo('<th id="creation-date">July'.$i2.'</th>');
+     }         
+     for($i2=1;$i2<=31;$i2++)
+     {echo('<th id="creation-date">Aug'.$i2.'</th>');
+     }         
+     for($i2=1;$i2<=30;$i2++)
+     {echo('<th id="creation-date">Sept'.$i2.'</th>');
+     }         
+     for($i2=1;$i2<=31;$i2++)
+     {echo('<th id="creation-date">Oct'.$i2.'</th>');
+     }         
+     for($i2=1;$i2<=30;$i2++)
+     {echo('<th id="creation-date">Nov'.$i2.'</th>');
+     }
+     for($i2=1;$i2<=31;$i2++)
+     {echo('<th id="creation-date">Dec'.$i2.'</th></thead>');
+     }         
+   
+  
+$rassign=mysql_query("Select * from subassign where subcode='$inval'");
+   //while($row=mysql_fetch_array($rassign,MYSQL_NUM))
+   //{
+$row=mysql_fetch_array($rassign,MYSQL_NUM);
+       echo("Students enrolled///");print_r($row);
+echo("///");
+//$row.next($row);
+$temp=$row.next($row);
+     echo($temp);  
+              //                                                 $temp=$row['studcode1'];
+       
+    //while(){
+     for($stopcount=0;$stopcount<60;$stopcount++)
+     {if(!strcmp($temp,false))
+          break;   
+         $attendance=mysql_query("Select * from $tabno where uid='STU201185'");
+        
+        //$temp=$row.next($row);
+        //while($row68=mysql_fetch_array($attendance))
+     $row68=mysql_fetch_array($attendance,MYSQL_NUM);
+        //print_r($row68);
+            
+            $counter=0;
+            echo('<tr><td>');
+            //$temp2=substr($temp,-9);
+            $temp2=str_replace("Array","",$temp);
+            echo($temp2.'</td>');
+            for($ancount=0;$ancount<=185;$ancount++)
+            {$temp3=$row68.next($row68);
+            //$temp4=substr($temp3,-8);
+            $temp4=str_replace("Array","",$temp3);
+            echo('<td>'.$temp4);
+            }
+         echo('</tr>');   
+         $temp=$row.next($row);
+      //  }// print_r($row68);
+   }
+   echo('</table></body></html>');
+/*if($attend=='p'||$attend=='P')
+    
+{echo ("////".$coll."////");
+    $r=mysql_query("INSERT INTO $tabno (uid,$coll) values('$uidcoll','$inval')");
+print_r($r);
+//INSERT INTO $tabno (uid,c2) values('sankalp','aaha')"
+echo ("gone past mysql");
+}
+mysql_close($conn);
+*/
+
+
+?>

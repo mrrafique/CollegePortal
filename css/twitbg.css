@@ -1,0 +1,17 @@
+body{
+	background-image:url('images/twitbg.jpg');
+	text-align:center;
+	background-repeat:no-repeat;
+	padding:10px;
+	height:88px;
+	width:258px;
+	font-family:Tahoma;
+	font-size:x-large;
+	color:#000000;
+}
+
+#para1{ font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+text-align:center;
+font-size:40px;
+}
+
